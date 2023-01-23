@@ -1,0 +1,40 @@
+.headline {
+    width: 1024;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-headline {
+    width: 100%;
+    height: 100%;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 5em;
+    color: antiquewhite;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: 4fr 12fr;
+    grid-template-columns: 2fr 8fr;
+    grid-gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+}
+
+.grid-container>div {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}
+
+.city-search {}
+
+.item2 {}
+
+.item3 {}
+
+.five-day-forecast {}
