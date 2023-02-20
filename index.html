@@ -21,15 +21,18 @@
         <div class="city-search">
             <h2>Search for a City:</h2>
             <input type="text" id="city-text" name="citysubmit"><br><br>
-            <button id="citysubmit">Submit</button>
+            <button onclick="addToList()" id="citysubmit">Submit</button>
         </div>
         <div class="weather-detail">
-            <h3>Weather Details</h3>
+            <h3>Weather Details</h3><br>
             <!--Local storage cities here-->
+            <p id="weatherDetails"></p>
         </div>
-        <div>item3</div>
+        <div>Cities: <br>
+        <ul id="citylist"></ul></div>
         <div class="five-day-forecast">
             <h3>Five Day Forecast:</h3>
+            
         </div>
     </div>
 </body>
