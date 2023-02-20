@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather by City</title>
     <link rel="stylesheet" href="./Assets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="./Assets/script.js"></script>
+
+
 </head>
 
 <body>
@@ -16,9 +20,11 @@
     <div class="grid-container">
         <div class="city-search">
             <h2>Search for a City:</h2>
-            <input type="text" id="city-text" name="city"><br><br>
+            <input type="text" id="city-text" name="citysubmit"><br><br>
+            <button id="citysubmit">Submit</button>
         </div>
-        <div>item2
+        <div class="weather-detail">
+            <h3>Weather Details</h3>
             <!--Local storage cities here-->
         </div>
         <div>item3</div>
@@ -27,5 +33,16 @@
         </div>
     </div>
 </body>
+
+<footer>
+    <div class="component__weather-box">
+        <div class="component__weather-content">
+            <div class="weather-content__overview"></div>
+            <div class="weather-content__temp"></div>
+        </div>
+        <div class="component__forecast-box"></div>
+    </div>
+
+</footer>
 
 </html>
