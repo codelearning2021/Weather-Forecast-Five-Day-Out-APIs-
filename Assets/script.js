@@ -14,9 +14,10 @@ function addToList() {
       .then(response => response.json())
       .then(data => {
         const weatherDescription = data.weather[0].description;
-        const temperature = data.main.temp;
-        console.log(`The weather in ${CITY} is ${weatherDescription} with a temperature of ${temperature} K.`);
-        var wD = "The weather in " + CITY + " is " + weatherDescription + " with a temperature of " + temperature + " K.";
+        const temperatureK = data.main.temp;
+        const temperatureF = (temperatureK * 9/5) - 459.67;
+        console.log(`The weather in ${CITY} is ${weatherDescription} with a temperature of ${temperatureF.toFixed(1)} °F.`);
+        var wD = "The weather in " + CITY + " is " + weatherDescription + " with a temperature of " + temperatureF.toFixed(1) + " °F.";
         document.getElementById("weatherDetails").innerHTML = wD;
       })
       .catch(error => console.error('Error fetching weather data:', error));
