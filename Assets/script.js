@@ -1,3 +1,7 @@
+// Declare site variables and key
+
+
+
 // Create list of city submissions
 function addToList() {
     let city = document.getElementById("city-text").value;
@@ -21,13 +25,41 @@ function addToList() {
         document.getElementById("weatherDetails").innerHTML = wD;
       })
       .catch(error => console.error('Error fetching weather data:', error));
-}
+
+$.ajax({
+  url: url,
+  method: "GET"
+}).then(function(fullWeather) {
+console.log(fullWeather);
+
+    // Getting API values for search city section and append them to the display
+    // var selectCity = fullWeather.list[0].name;
+    // var selectIcon = "https://openweathermap.org/img/w/" + fullWeather.list[0].weather[0].icon + ".png";
+    // var selectTemp = fullWeather.list[0].main.temp;
+    // var selectHumid = fullWeather.list[0].main.humidity;
+    // var selectWind = fullWeather.list[0].wind.speed;
+    // $("#select-area").text(selectCity);
+    // $("#select-icon").attr("src", selectIcon);
+    // $("#select-temp").text(selectTemp);
+    // $("#select-humid").text(selectHumid);
+    // $("#select-wind").text(selectWind);
 
 
 
+   // Setting weather values for every day/block
 
+   // Day 1
+   var cityFiveDateOne = fullWeather.list[1].dt_txt;
+   // var cityFiveIconOne = "https://openweathermap.org/img/w/" + fullWeather.list[0].weather[0].icon + ".png";
+   var foreCastTemp1 = fullWeather.list[0].main.temp;
+   var foreCastHumid1 = fullWeather.list[0].main.humidity;
+   // $("#city-five-icon-one").attr("src", cityFiveIconOne);
+   var foreCastWind1 = fullWeather.list[0].wind.speed;
+   $("#callTemp1").text(foreCastTemp1); 
+   $("#callWind1").text(foreCastWind1); 
+   $("#callHumid1").text(foreCastHumid1);
 
-
+})}
 
 // const CURRENT_LOCATION = document.getElementsByClassName('weather-content__overview')[0];
 // const CURRENT_TEMP = document.getElementsByClassName('weather-content__temp')[0];
