@@ -1,28 +1,53 @@
 // Declare site variables and key
+  const API_KEY = '6941df9547eafe90e5ca91d9d5f9a4e8'; // replace with your API key
+document.getElementById("citylist").addEventListener("click", (event) => {
+  console.log(event.target);
+  console.log(event.target.matches("li"))
+  if (event.target.matches("li")) {
+    const cityName = event.target.textContent;
+    console.log(cityName);
+    addToList(cityName);
+  }
+})
 
+function getFiveDaysWeather(lat, lon) {
+  const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${API_KEY}`
+  fetch (url)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    }
+      )
+}
 
 
 // Create list of city submissions
-function addToList() {
+function addToList(cityName) {
+  let CITY = ''; // replace with the city you want to get the weather for
+  if (cityName) {
+    CITY = cityName
+  } else {
     let city = document.getElementById("city-text").value;
-  
+    CITY = city;
     let li = document.createElement("li");
     li.textContent = city + ' ';
     document.getElementById("citylist").appendChild(li);
-    const API_KEY = '6941df9547eafe90e5ca91d9d5f9a4e8'; // replace with your API key
-    let CITY = city; // replace with the city you want to get the weather for
+  }
     
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}`;
     
     fetch(url)
       .then(response => response.json())
       .then(data => {
+
         const weatherDescription = data.weather[0].description;
         const temperatureK = data.main.temp;
         const temperatureF = (temperatureK * 9/5) - 459.67;
         console.log(`The weather in ${CITY} is ${weatherDescription} with a temperature of ${temperatureF.toFixed(1)} °F.`);
         var wD = "The weather in " + CITY + " is " + weatherDescription + " with a temperature of " + temperatureF.toFixed(1) + " °F.";
         document.getElementById("weatherDetails").innerHTML = wD;
+        console.log(data);
+        getFiveDaysWeather(data.coord.lat, data.coord.lon)
       })
       .catch(error => console.error('Error fetching weather data:', error));
 
@@ -31,6 +56,8 @@ $.ajax({
   method: "GET"
 }).then(function(fullWeather) {
 console.log(fullWeather);
+
+
 
     // Getting API values for search city section and append them to the display
     // var selectCity = fullWeather.list[0].name;
