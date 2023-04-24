@@ -5,15 +5,16 @@
     border: 2px solid black;
     align-items: center;
     justify-content: center;
+    padding-bottom: 2em;
 }
 
 .top-headline {
     width: 100%;
     height: 100%;
-    margin-top: 40px;
+    margin-top: 30px;
     text-align: center;
     font-size: 5em;
-    color: antiquewhite;
+    color: darkblue;
 }
 
 .grid-container {
