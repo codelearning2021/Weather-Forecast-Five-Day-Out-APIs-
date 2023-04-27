@@ -1,14 +1,11 @@
 // Declare site variables and key
 const API_KEY = '6941df9547eafe90e5ca91d9d5f9a4e8'; // replace with your API key
-document.getElementById("citylist").addEventListener("click", (event) => {
+document.getElementById("citysubmit").addEventListener("click", (event) => {
   console.log(event.target);
-  console.log(event.target.matches("li"))
-  if (event.target.matches("li")) {
-    const cityName = event.target.textContent;
-    console.log(cityName);
-    addToList(cityName);
-    saveHistory(cityName);
-  }
+  const cityName = document.getElementById("city-text").value
+  console.log(cityName);
+  addToList(cityName);
+  saveHistory(cityName);
 })
 
 function saveHistory(cityName) {
@@ -17,23 +14,28 @@ function saveHistory(cityName) {
     storage = []
 
   }
-  
-  storage.push (cityName)
-  localStorage.setItem ("weatherHistory", JSON.stringify (storage))
-  getHistory ()
+
+  storage.push(cityName)
+  localStorage.setItem("weatherHistory", JSON.stringify(storage))
+  getHistory()
 }
 
-function getHistory () {
+getHistory()
+function getHistory() {
   let storage = JSON.parse(localStorage.getItem("weatherHistory"))
   if (storage === null) {
-    document.getElementById("citydiv").textContent="no history"
+    document.getElementById("citydiv").textContent = "no history"
   } else {
-    document.getElementById("citydiv").textContent=""
-    for(let i=0; i<storage.length; i++) {
+    document.getElementById("citydiv").textContent = ""
+    for (let i = 0; i < storage.length; i++) {
       // create buttons and add text content to storage[i], then append to "citydiv" div
       let button = document.createElement("button");
-    button.textContent = storage;
-    document.getElementById("citydiv").appendChild(button);
+      button.textContent = storage[i];
+      document.getElementById("citydiv").appendChild(button);
+
+      button.addEventListener("click", function (event) {
+        addToList(event.target.textContent)
+      })
     }
   }
 }
@@ -194,21 +196,4 @@ function addToList(cityName) {
     $("#callWind5").text(foreCastWind5);
     $("#callHumid5").text(foreCastHumid5);
   })
-}
-
-
-
-var storage = JSON.parse(sessionStorage.getItem('quizHighscores'))
-var highscoresEl = document.querySelector(".highscores")
-
-if (storage === null) {
-    highscoresEl.textContent = "No Highscores"
-} else {
-    highscoresEl.textContent = ''
-
-    for (var i = 0; i < storage.length; i++) {
-        var p = document.createElement('p')
-        p.textContent = `Name: ${storage[i].name} ---------- Score: ${storage[i].score}`
-        highscoresEl.append(p)
-    }
 }
