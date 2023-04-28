@@ -14,7 +14,7 @@ This is an API dashboard that displays the weather forecast for all five days fo
 * OpenWeatherMap API
 
 ### Screenshot link
-![screenshot of deployed]
+![screenshot of deployed]https://github.com/codelearning2021/Weather-Forecast-Five-Day-Out-APIs-/blob/main/Assets/apiweathersitescreenshot.png
 
 Relative Link: 
 (codelearning2021/Weather-Forecast-Five-Day-Out-APIs-)
